@@ -19,7 +19,7 @@ public:
     friend std::istream& operator >> (std::istream& stream, Complex_Locuinte& complex);
     friend std::ostream& operator << (std::ostream& stream, Complex_Locuinte& complex);
     Complex_Locuinte& operator = (Complex_Locuinte&);
-    virtual void CalculChirie(double x, unsigned int y)=0; ///functie virtuala pura
+    virtual void CalculChirie(double x, unsigned int y) = 0; ///functie virtuala pura
 
     ///am facut toate variabilele protected deoarece ma voi folosi de ele in clasele copil
 protected:
@@ -31,17 +31,17 @@ protected:
 };
 
 Complex_Locuinte::Complex_Locuinte(std::string NumeProprietar, double SuprafataLocuinta, unsigned int numar, double discount) {
-    this->NumeProprietar=NumeProprietar;
-    this->SuprafataLocuinta=SuprafataLocuinta;
-    this->numar=numar;
-    this->discount=discount;
+    this->NumeProprietar = NumeProprietar;
+    this->SuprafataLocuinta = SuprafataLocuinta;
+    this->numar = numar;
+    this->discount = discount;
 }
 
 Complex_Locuinte::Complex_Locuinte(const Complex_Locuinte& complex) {
-    NumeProprietar=complex.NumeProprietar;
-    SuprafataLocuinta=complex.SuprafataLocuinta;
-    numar=complex.numar;
-    discount=complex.discount;
+    NumeProprietar = complex.NumeProprietar;
+    SuprafataLocuinta = complex.SuprafataLocuinta;
+    numar = complex.numar;
+    discount = complex.discount;
 }
 
 Complex_Locuinte::Complex_Locuinte() {}
@@ -65,19 +65,19 @@ unsigned int Complex_Locuinte::getDiscount(){
 }
 
 void Complex_Locuinte::setNumeProprietar(std::string) {
-    this->NumeProprietar=NumeProprietar;
+    this->NumeProprietar = NumeProprietar;
 }
 
 void Complex_Locuinte::setSuprafataLocuinta(double) {
-    this->SuprafataLocuinta=SuprafataLocuinta;
+    this->SuprafataLocuinta = SuprafataLocuinta;
 }
 
 void Complex_Locuinte::setNumar(unsigned int) {
-    this->numar=numar;
+    this->numar = numar;
 }
 
 void Complex_Locuinte::setDiscount(double) {
-    this->discount=discount;
+    this->discount = discount;
 }
 
 std::istream& operator >> (std::istream& stream, Complex_Locuinte& complex){
@@ -122,35 +122,35 @@ private:
     unsigned int nrapartamente;
 };
 
-Apartament::Apartament(std::string  NumeProprietar="Null NumeProprietar", double SuprafataLocuinta=0.0,
-                       unsigned int numar=0, double discount=0.0,
-                       unsigned int nretaje=0, unsigned int nrapartamente=0):
+Apartament::Apartament(std::string  NumeProprietar = "Null NumeProprietar", double SuprafataLocuinta = 0.0,
+                       unsigned int numar = 0, double discount = 0.0,
+                       unsigned int nretaje = 0, unsigned int nrapartamente = 0):
         Complex_Locuinte(NumeProprietar, SuprafataLocuinta, numar, discount) {
-    this->nretaje=nretaje;
-    this->nrapartamente=nrapartamente;
+    this->nretaje = nretaje;
+    this->nrapartamente = nrapartamente;
 }
 
 Apartament::Apartament(const Apartament& apartament) {
-    nretaje=apartament.nretaje;
-    nrapartamente=apartament.nrapartamente;
+    nretaje = apartament.nretaje;
+    nrapartamente = apartament.nrapartamente;
 }
 
 Apartament::~Apartament() {}
 
 unsigned int Apartament::getEtaje() {
-    return this->nretaje=nretaje;
+    return this->nretaje = nretaje;
 }
 
 unsigned int Apartament::getNrApartamente() {
-    return this->nrapartamente=nrapartamente;
+    return this->nrapartamente = nrapartamente;
 }
 
 void Apartament::setEtaje(unsigned int) {
-    this->nretaje=nretaje;
+    this->nretaje = nretaje;
 }
 
 void Apartament::setNrApartamente(unsigned int) {
-    this->nrapartamente=nrapartamente;
+    this->nrapartamente = nrapartamente;
 }
 
 std::istream& operator >> (std::istream& stream,  Apartament& apartament){
@@ -166,7 +166,7 @@ std::ostream& operator << (std::ostream& stream, Apartament& apartament){
     return stream;
 }
 ///supraincarcarea operatorului de atribuire
-Apartament& Apartament::operator = (Apartament& apartament){
+    Apartament& Apartament::operator = (Apartament& apartament){
     Complex_Locuinte& complex=apartament;
     this->Complex_Locuinte::operator = (complex);
     this->nretaje = apartament.nretaje;
@@ -175,7 +175,7 @@ Apartament& Apartament::operator = (Apartament& apartament){
 }
 
 double Apartament::CumparaApartament(double x) {
-    return CumparaMP*x;
+    return CumparaMP * x;
 }
 
 class Casa: public Complex_Locuinte{ ///clasa copil
@@ -196,8 +196,8 @@ private:
     double SuprafataCurte;
 };
 
-Casa::Casa(std::string NumeProprietar="Null NumeProprietar", double PretLocuinta=0.0,
-           unsigned int numar=0, double discount=0.0, double SuprafataCurte=0.0)
+Casa::Casa(std::string NumeProprietar = "Null NumeProprietar", double PretLocuinta = 0.0,
+           unsigned int numar = 0, double discount = 0.0, double SuprafataCurte = 0.0)
         :Complex_Locuinte(NumeProprietar, PretLocuinta, numar, discount) {
     this->SuprafataCurte=SuprafataCurte;
 }
@@ -213,7 +213,7 @@ double Casa::getSuprafataCurte() {
 }
 
 void Casa::setSuprafataCurte(double) {
-    this->SuprafataCurte=SuprafataCurte;
+    this->SuprafataCurte = SuprafataCurte;
 }
 
 std::istream& operator >> (std::istream& stream,  Casa& casa){
@@ -229,14 +229,14 @@ std::ostream& operator << (std::ostream& stream, Casa& casa){
 }
 
 Casa& Casa::operator = (Casa& casa){
-    Complex_Locuinte& complex=casa;
+    Complex_Locuinte& complex = casa;
     this->Complex_Locuinte::operator = (complex);
     this->SuprafataCurte = casa.SuprafataCurte;
     return *this;
 }
 
 double Casa::CumparaCasa(double x) { ///declararea functiei statice
-    return CumparaMP*x +CumparaMP/x;
+    return CumparaMP * x + CumparaMP / x;
 }
 
 int main() {
@@ -447,6 +447,8 @@ int main() {
     }
 
 }
+
+///Input
 
 ///Andrei 80.00 1 25.04 4 16
 ///Marius 90.00 3  21.12 5 20
